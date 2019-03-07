@@ -1,8 +1,11 @@
-
 Given /the following movies exist/ do |movies_table|
   movies_table.hashes.each do |movie|
     Movie.create movie
   end
+end
+
+Then(/^the director of "([^"]*)" should be "([^"]*)"$/) do |arg1, arg2|
+  Movie.find_by_title(arg1).director == arg2
 end
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
